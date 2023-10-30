@@ -46,49 +46,17 @@
                 margin: 10px;
             }
 
-            .chatbox {
-                flex: 1;
-                width: 100%; /* Full width on small screens, 50% on larger screens */
-                width: 175px;
-                height: 450px;
-                border: 5px solid rgb(186, 82, 82);
-                overflow-y: scroll;
-                padding: 10px;
-                margin-bottom: 15px;
-                white-space: pre-wrap;
-            }
-
             #video-container {
                 flex: 1;
-                width: 100%; /* Full width on small screens, 50% on larger screens */
+                width: 50%; /* Full width on small screens, 50% on larger screens */
                 max-width: 750px;
                 max-height: 450px;
                 position: relative;
                 display: flex;
                 flex-direction: column; /* Stack video and right column on small screens */
                 align-items: center; /* Center the contents */
-                margin-left: 20px;
             }
-
-            .message {
-                position: relative;
-                margin-bottom: 10px;
-            }
-
-            .reply-container {
-                margin-left: 20px; /* Indent replies for better visibility */
-            }
-
-            .reply-input {
-                display: none;
-                margin-top: 5px;
-            }
-
-            .reply-button {
-                margin-left: 10px;
-            }
-
-
+            
             #videoContainer {
                 width: 100%;
                 width: 750px;
@@ -111,20 +79,14 @@
 
             #right-column {
                 flex: 1;
-                width: 170px;
+                width: 50%
+                width: 275px;
                 background-color: #c96e6e;
-                margin-left: 50px; /* Adjust the margin based on your design */
-                align-items: right;
+                align-items: center;
+                margin-left: 250px; /* Adjust the margin based on your design */
             }
             /* Media queries for responsiveness */
             @media screen and (min-width: 768px) {
-                .chatbox {
-                    width: 50%;
-                    height: 400px;
-                    margin-right: 10px;
-                    margin-bottom: 0;
-                }
-    
                 #video-container {
                     width: 50%;
                 }
@@ -148,7 +110,6 @@
             <h2>Say Some</h2>
         </div>
         <div id="container"> 
-            <div class="chatbox" id="left-chatbox"></div>
             <div id="video-container">
                 <div id="videoContainer">
                     <img id="videoThumbnail" src="cool.jpg" alt="Video Thumbnail" onclick="playVideo()">
@@ -172,47 +133,7 @@
                 
             </div>
         </div>
-        <input type="text" id="messageInput" placeholder="Type your message..." onkeydown="handleKeyPress(event)">
-        <button onclick="sendMessage()">Send</button>
-        
         <script>
-            var messageId = 0;
-
-            function sendMessage() {
-                var messageInput = document.getElementById('messageInput');
-                var chatbox = document.getElementById('left-chatbox');
-                // Get the current message
-                var message = messageInput.value;
-                
-                // Display the message in the chatbox
-                chatbox.innerHTML += '<div class="message" data-id="' + messageId + '">' +
-                    '<p><strong>You:</strong> ' + message + '</p>' +
-                    '<div class="reply-input" id="replyInput' + messageId + '">' +
-                    '<input type="text" placeholder="Reply to this message...">' +
-                    '<button onclick="sendReply(' + messageId + ')">Send</button></div>' +
-                    '<button class="reply-button" onclick="toggleReplyInput(' + messageId + ')">Reply</button>' +
-                    '<div class="reply-container" id="repliesContainer' + messageId + '"></div></div>';
-                
-                messageId++;
-
-                // Clear the input field
-                messageInput.value = '';
-
-                // Scroll to the bottom of the chatbox
-                chatbox.scrollTop = chatbox.scrollHeight;
-            }
-
-            function handleKeyPress(event) {
-                // Check if the pressed key is Enter (key code 13)
-                if (event.keyCode === 13) {
-                    // Prevent the default behavior of the Enter key (e.g., submitting a form)
-                    event.preventDefault();
-
-                    sendMessage();
-                    // Call the sendMessage function when Enter is pressed
-                }
-            }
-
             function playVideo() {
                 var videoThumbnail = document.getElementById('videoThumbnail');
                 var video = document.getElementById('chatVideo');
@@ -229,29 +150,6 @@
 
                 video.play();
             }
-
-            function toggleReplyInput(messageId) {
-                var replyInput = document.getElementById('replyInput' + messageId);
-                replyInput.style.display = (replyInput.style.display === 'none' || replyInput.style.display === '') ? 'block' : 'none';
-            } 
-            
-            function sendReply(messageId) {
-                var replyInput = document.getElementById('replyInput' + messageId);
-                var replyMessage = replyInput.querySelector('input').value;
-
-                // You can customize how you want to display the reply. Here, I'm adding it after the original message.
-                var originalMessage = document.querySelector('.message[data-id="' + messageId + '"]');
-                var repliesContainer = originalMessage.querySelector('.reply-container');
-                repliesContainer.innerHTML += '<div class="reply-container"><p><strong>Reply:</strong> ' + replyMessage + '</p></div>';
-               
-                // Clear the reply input field
-                replyInput.querySelector('input').value = '';
-
-                // Hide the reply input fie
-                replyInput.style.display = 'none';
-            }
-
-
         </script>
         
     </body>
