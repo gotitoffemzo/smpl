@@ -48,7 +48,7 @@
 
             #video-container {
                 flex: 1;
-                width: 50%; /* Full width on small screens, 50% on larger screens */
+                width: 100%; /* Full width on small screens, 50% on larger screens */
                 max-width: 750px;
                 max-height: 450px;
                 position: relative;
@@ -79,15 +79,18 @@
 
             #right-column {
                 flex: 1;
-                width: 50%
+                width: 100%
                 width: 275px;
                 background-color: #c96e6e;
                 align-items: center;
                 margin-left: 250px; /* Adjust the margin based on your design */
             }
             /* Media queries for responsiveness */
-            @media screen and (min-width: 768px) {
+            @media screen and (min-width: 738px) {
                 #video-container {
+                    width: 50%;
+                }
+                #right-column {
                     width: 50%;
                 }
             }
