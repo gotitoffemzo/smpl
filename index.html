@@ -86,24 +86,6 @@
         </style>
     </head>  
     <body>
-         <audio id="luckiomb" controls loop>
-            <source src="luckiomb.mp3" type="audio/mp3">
-            Your browser does not support the audio tag.
-        </audio>
-
-        <script>
-            // Get the audio element
-            var audio = document.getElementById("luckiomb");
-            
-            // Play the audio when the page is loaded
-            audio.play();
-            
-            // Restart the audio when the page is refreshed
-            window.onload = function() {
-                audio.play();
-            };
-        </script>
-
                 <!-- header of website layout -->
         <div class="header">
             <h2 style="color:rgb(0, 0, 0);font-size:400%; font-family: audela;">
@@ -130,6 +112,10 @@
                 </div>
             </div>
         </div>
+        <audio id="luckiomb" controls autoplay loop>
+            <source src="luckiomb.mp3" type="audio/mp3">
+            Your browser does not support the audio tag.
+        </audio>
         <script>
             function playVideo() {
                 var videoThumbnail = document.getElementById('videoThumbnail');
