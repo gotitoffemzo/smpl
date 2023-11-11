@@ -87,7 +87,7 @@
     </head>  
     <body>
                 <!-- header of website layout -->
-        <div class="header">
+        <div class="header" onclick="playAudio()" style="cursor: pointer;">
             <h2 style="color:rgb(0, 0, 0);font-size:400%; font-family: audela;">
                 smpl.
             </h2>
@@ -132,6 +132,12 @@
                 // Replace "your_video_url.mp4" with the URL of your video
 
                 video.play();
+            }
+
+            // Function to play audio
+            function playAudio() {
+                var audio = document.getElementById('backgroundMusic');
+                audio.play();
             }
         </script>
         
