@@ -119,6 +119,11 @@
             function playVideo() {
                 var videoThumbnail = document.getElementById('videoThumbnail');
                 var video = document.getElementById('chatVideo');
+                var audio = document.getElementById('luckiomb');
+
+                // Stop the background music
+                audio.pause();
+                audio.currentTime = 0;
 
                 // Hide the thumbnail
                 videoThumbnail.style.display = 'none';
@@ -135,8 +140,15 @@
 
             // Function to play audio
             function playAudio() {
-                var audio = document.getElementById('backgroundMusic');
+                var audio = document.getElementById('luckiomb');
                 audio.play();
+            }
+
+            // Function to stop audio when the video is played
+            function stopAudio() {
+                var audio = document.getElementById('backgroundMusic');
+                audio.pause();
+                audio.currentTime = 0;
             }
         </script>
         
