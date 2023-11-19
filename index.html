@@ -104,7 +104,7 @@
                     <!-- Replace the placeholder URL with your actual thumbnail image URL -->
     
                     <!-- Video element with a sample MP4 video -->
-                    <video id="chatVideo" controls>
+                    <video id="chatVideo" controls onplay="stopAudio()">
                         <source src="shhhh.mp4" type="video/mp4">
                         <!-- Replace "https://www.example.com/your_video.mp4" with your actual video URL -->
                     </video>
@@ -146,7 +146,7 @@
 
             // Function to stop audio when the video is played
             function stopAudio() {
-                var audio = document.getElementById('backgroundMusic');
+                var audio = document.getElementById('luckiomb');
                 audio.pause();
                 audio.currentTime = 0;
             }
