@@ -105,7 +105,6 @@
     
                     <!-- Video element with a sample MP4 video -->
                     <video id="chatVideo" controls onplay="stopAudio()">
-                        <source src="shhhh.mp4" type="video/mp4">
                         <!-- Replace "https://www.example.com/your_video.mp4" with your actual video URL -->
                     </video>
                 </div>
@@ -131,9 +130,12 @@
                 // Show the video
                 video.style.display = 'block';
 
-                // Add your video source here using the <source> element inside the <video> tag
-                // Example: video.innerHTML = '<source src="your_video_url.mp4" type="video/mp4">';
-                // Replace "your_video_url.mp4" with the URL of your video
+                // Get a random video filename
+                var randomVideo = getRandomVideo();
+                
+                // Add the video source dynamically
+                video.innerHTML = '<source src="' + randomVideo + '" type="video/mp4">';
+
 
                 video.play();
             }
@@ -149,6 +151,13 @@
                 var audio = document.getElementById('luckiomb');
                 audio.pause();
                 audio.currentTime = 0;
+            }
+
+            // Example function to get a random video filename
+            function getRandomVideo() {
+                var videos = ["nett.mp4", "shhhh.mp4", "sotuff.mp4"]; // Add more video filenames as needed
+                var randomIndex = Math.floor(Math.random() * videos.length);
+                return videos[randomIndex];
             }
         </script>
         
