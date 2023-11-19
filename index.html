@@ -115,6 +115,8 @@
             Your browser does not support the audio tag.
         </audio>
         <script>
+            var lastPlayedVideo = "";
+            
             function playVideo() {
                 var videoThumbnail = document.getElementById('videoThumbnail');
                 var video = document.getElementById('chatVideo');
@@ -132,7 +134,13 @@
 
                 // Get a random video filename
                 var randomVideo = getRandomVideo();
-                
+                while (randomVideo === lastPlayedVideo) {
+                    randomVideo = getRandomVideo();
+                }
+
+                // Update the last played video
+                lastPlayedVideo = randomVideo;
+
                 // Add the video source dynamically
                 video.innerHTML = '<source src="' + randomVideo + '" type="video/mp4">';
 
