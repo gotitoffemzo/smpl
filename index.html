@@ -141,8 +141,14 @@
                 // Update the last played video
                 lastPlayedVideo = randomVideo;
 
+                // Reset the video element
+                video.innerHTML = '';
                 // Add the video source dynamically
-                video.innerHTML = '<source src="' + randomVideo + '" type="video/mp4">';
+                var source = document.createElement('source');
+                source.src = randomVideo;
+                source.type = 'video/mp4';
+                video.appendChild(source);
+
 
 
                 video.play();
