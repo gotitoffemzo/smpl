@@ -133,6 +133,9 @@
 
                 // Get a random video filename
                 var randomVideo = getRandomVideo();
+                while (randomVideo === lastPlayedVideo) {
+                    randomVideo = getRandomVideo();
+                }
 
                 // Update the last played video
                 lastPlayedVideo = randomVideo;
@@ -172,7 +175,7 @@
 
             // Function to play another random video when the current video ends
             function playAnotherRandomVideo() {
-                playRandomVideo();
+                playVideo();
             }
 
             // Function to reload the page
