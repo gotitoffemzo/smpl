@@ -86,7 +86,7 @@
     </head>  
     <body>
                 <!-- header of website layout -->
-        <div class="header" onclick=stopAudio()" style="cursor: pointer;">
+        <div class="header" onclick=playAudio()" style="cursor: pointer;">
             <h2 style="color:rgb(0, 0, 0);font-size:400%; font-family: audela;">
                 smpl.
             </h2>
@@ -109,7 +109,7 @@
                 </div>
             </div>
         </div>
-        <audio id="luckiomb" autoplay loop>
+        <audio id="luckiomb" loop>
             <source src="luckiomb.mp3" type="audio/mp3">
             Your browser does not support the audio tag.
         </audio>
@@ -156,7 +156,11 @@
             // Function to play audio
             function playAudio() {
                 var audio = document.getElementById('luckiomb');
-                audio.play();
+                if (audio.paused) {
+                    audio.play();
+                } else {
+                    audio.pause();
+                }
             }
 
             // Function to stop audio when the video is played
