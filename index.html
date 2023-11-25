@@ -86,7 +86,7 @@
     </head>  
     <body>
                 <!-- header of website layout -->
-        <div class="header" onclick="playAudio()" style="cursor: pointer;">
+        <div class="header" onclick=reloadPage()" style="cursor: pointer;">
             <h2 style="color:rgb(0, 0, 0);font-size:400%; font-family: audela;">
                 smpl.
             </h2>
@@ -176,6 +176,11 @@
             // Function to play another random video when the current video ends
             function playAnotherRandomVideo() {
                 playVideo();
+            }
+
+            // Function to reload the page
+            function reloadPage() {
+                location.reload();
             }
         </script>
         
