@@ -86,7 +86,7 @@
     </head>  
     <body>
                 <!-- header of website layout -->
-        <div class="header" onclick=playAudio()" style="cursor: pointer;">
+        <div class="header" onclick=toggleAudio()" style="cursor: pointer;">
             <h2 style="color:rgb(0, 0, 0);font-size:400%; font-family: audela;">
                 smpl.
             </h2>
@@ -154,7 +154,7 @@
             }
 
             // Function to play audio
-            function playAudio() {
+            function toggleAudio() {
                 var audio = document.getElementById('luckiomb');
                 if (audio.paused) {
                     audio.play();
