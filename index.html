@@ -116,7 +116,7 @@ load<!DOCTYPE html>
         <script>
             var lastPlayedVideo = "";
             
-            function playVideo() {
+            function playRandomVideo() {
                 var videoThumbnail = document.getElementById('videoThumbnail');
                 var video = document.getElementById('chatVideo');
                 var audio = document.getElementById('luckiomb');
@@ -133,9 +133,6 @@ load<!DOCTYPE html>
 
                 // Get a random video filename
                 var randomVideo = getRandomVideo();
-                while (randomVideo === lastPlayedVideo) {
-                    randomVideo = getRandomVideo();
-                }
 
                 // Update the last played video
                 lastPlayedVideo = randomVideo;
