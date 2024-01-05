@@ -62,17 +62,17 @@
                 position: center;
             }
 
-            /* #videoThumbnail {
+            #videoThumbnail {
                 width: 100%;
                 width: 750px;
                 height: 450px;
                 cursor: pointer;
-            } */
+            } 
 
             #chatVideo {
                 width: 100%; /* Match the width with the thumbnail */
                 height: 100%; /* Maintain aspect ratio */
-                display: flex;
+                display: none;
             }
             /* Media queries for responsiveness */
             @media screen and (max-width: 400px) {
@@ -99,11 +99,11 @@
         <div id="container"> 
             <div id="video-container">
                 <div id="videoContainer">
-                    <!--<img id="videoThumbnail" src="cool.jpg" alt="Video Thumbnail" onclick="playVideo()">-->
+                    <img id="videoThumbnail" src="cool.jpg" alt="Video Thumbnail" onclick="playVideo()">
                     <!-- Replace the placeholder URL with your actual thumbnail image URL -->
     
                     <!-- Video element with a sample MP4 video -->
-                    <video id="chatVideo" controls onclick="playVideo() " onended="reloadPage()">
+                    <video id="chatVideo" controls " onended="reloadPage()">
                         <!-- Replace "https://www.example.com/your_video.mp4" with your actual video URL -->
                     </video>
                 </div>
