@@ -51,6 +51,10 @@
             .box-container {
                 text-align: center;
             }
+            /* Adjust margin for the bottom two boxes */
+            .box-container.bottom-boxes .box {
+                margin-top: 10px;
+            }
         </style>
     </head>  
     <body>
@@ -79,7 +83,7 @@
         </div>
     
         <!-- Boxes below, spaced out evenly -->
-        <div class="box-container">
+        <div class="box-container bottom-boxes">
             <div class="box"></div>
             <div class="box"></div>
         </div>
