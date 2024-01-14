@@ -73,20 +73,7 @@
                 cursor: grab; /* Add cursor pointer */
                 user-select: none; /* Disable text selection */
             }
-                  /* Style for control buttons */
-            .controls {
-                display: flex;
-                align-items: center;
-                margin-top: 10px;
-                margin-left: 850px;
-            }
-    
-            .control-button {
-                cursor: pointer;
-                font-size: 20px;
-                padding: 5px;
-                color: rgb(0, 0, 0);
-            }
+
         </style>
     </head>  
     <body>
@@ -103,18 +90,15 @@
             <a href="about.html">-contact</a>
         </div>
 
-         <!-- Boxes -->
+        <!-- Boxes -->
         <div class="box">
+            <video width="100%" height="100%" controls>
+                <source src="your-video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
             <div class="progress-bar">
                 <div class="circle" onmousedown="startMoving(event)"></div>
-            </div>     
-        </div>
-      
-          <!-- Control buttons -->
-        <div class="controls">
-            <div class="control-button" onclick="previousTrack()">Back</div>
-            <div class="control-button" onclick="togglePlayPause()">Play/Pause</div>
-            <div class="control-button" onclick="nextTrack()">➡</div>
+            </div>
         </div>
       
         <script>
@@ -157,21 +141,6 @@
     
                 document.removeEventListener('mousemove', moveCircle);
                 document.removeEventListener('mouseup', stopMoving);
-            }
-          // JavaScript for control buttons
-            function togglePlayPause() {
-                console.log('Play/Pause clicked');
-                // Add your play/pause logic here
-            }
-    
-            function previousTrack() {
-                console.log('Back clicked');
-                // Add your previous track logic here
-            }
-    
-            function nextTrack() {
-                console.log('Next clicked');
-                // Add your next track logic here
             }
         </script>
     </body>
