@@ -34,17 +34,58 @@
                 color: rgb(235, 154, 101);
             }
             body {
-                
                 font-family: Arial, sans-serif;
                 background-color: rgb(236, 216, 216);
+                margin: 0;
+                overflow: hidden;
             }
-                    /* Style for boxes */
+            /* Style for boxes */
             .box {
-                width: 250px;
-                height: 250px;
+                width: 350px;
+                height: 350px;
                 background-color: rgb(50, 168, 158);
-                margin: 20px;
-                display: inline-block;
+                margin: 20px auto;
+                position: relative;
+    
+            }
+          
+             /* Style for progress bar */
+            .progress-bar {
+                position: absolute;
+                bottom: 0px;
+                left: 0;
+                width: 100%;
+                height: 10px;
+                background-color: #ccc;
+                overflow: hidden; /* Ensure the circle stays within the progress bar */
+    
+            }
+    
+            /* Style for moving circle */
+            .circle {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 20px;
+                height: 20px;
+                background-color: rgb(235, 154, 101);
+                border-radius: 50%;
+                cursor: grab; /* Add cursor pointer */
+                user-select: none; /* Disable text selection */
+            }
+                  /* Style for control buttons */
+            .controls {
+                display: flex;
+                align-items: center;
+                margin-top: 10px;
+                margin-left: 850px;
+            }
+    
+            .control-button {
+                cursor: pointer;
+                font-size: 20px;
+                padding: 5px;
+                color: rgb(0, 0, 0);
             }
         </style>
     </head>  
@@ -60,6 +101,78 @@
         <div class="nav_menu">
             <a href=" https://simplyrenzo.com/">Home</a>
             <a href="about.html">-contact</a>
+        </div>
 
+         <!-- Boxes -->
+        <div class="box">
+            <div class="progress-bar">
+                <div class="circle" onmousedown="startMoving(event)"></div>
+            </div>     
+        </div>
+      
+          <!-- Control buttons -->
+        <div class="controls">
+            <div class="control-button" onclick="previousTrack()">Back</div>
+            <div class="control-button" onclick="togglePlayPause()">Play/Pause</div>
+            <div class="control-button" onclick="nextTrack()">Next</div>
+        </div>
+      
+        <script>
+                  // JavaScript to make the circle follow the mouse within the progress bar
+            let isMoving = false;
+    
+            function startMoving(event) {
+                isMoving = true;
+    
+                document.addEventListener('mousemove', moveCircle);
+                document.addEventListener('mouseup', stopMoving);
+            }
+          
+            function moveCircle(e) {
+                if (isMoving) {
+                    const circle = document.querySelector('.circle');
+                    const progressBar = document.querySelector('.progress-bar');
+                    const box = document.querySelector('.box');
+    
+                    const boxRect = box.getBoundingClientRect();
+    
+                    // Calculate the position of the mouse relative to the box
+                    const mouseX = e.clientX - boxRect.left;
+                    const mouseY = e.clientY - boxRect.top;
+    
+                    // Calculate the maximum left position of the circle within the progress bar
+                    const maxLeft = progressBar.offsetWidth - circle.offsetWidth;
+    
+                    // Ensure the circle stays within the progress bar
+                    const leftPosition = Math.min(Math.max(mouseX, 0), maxLeft);
+    
+                    // Set the position of the circle
+                    circle.style.left = leftPosition + 'px';
+                    circle.style.bottom = '0';
+                }
+            }
+    
+            function stopMoving() {
+                isMoving = false;
+    
+                document.removeEventListener('mousemove', moveCircle);
+                document.removeEventListener('mouseup', stopMoving);
+            }
+          // JavaScript for control buttons
+            function togglePlayPause() {
+                console.log('Play/Pause clicked');
+                // Add your play/pause logic here
+            }
+    
+            function previousTrack() {
+                console.log('Back clicked');
+                // Add your previous track logic here
+            }
+    
+            function nextTrack() {
+                console.log('Next clicked');
+                // Add your next track logic here
+            }
+        </script>
     </body>
 </html>
