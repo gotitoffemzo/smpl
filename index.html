@@ -117,7 +117,7 @@
                     <!-- Replace the placeholder URL with your actual thumbnail image URL -->
     
                     <!-- Video element with a sample MP4 video -->
-                    <video id="chatVideo" controls " onended="reloadPage()" onclick="hideJustClickText()">
+                    <video id="chatVideo" controls " onended="reloadPage()">
                         <!-- Replace "https://www.example.com/your_video.mp4" with your actual video URL -->
                     </video>
 
@@ -140,6 +140,11 @@
                 var videoThumbnail = document.getElementById('videoThumbnail');
                 var video = document.getElementById('chatVideo');
                 var audio = document.getElementById('luckiomb');
+                var justClickText = document.getElementById('justClickText');
+                justClickText.style.display = 'none';
+    
+                // Additional logic for playing the video, if needed
+            }
 
                 // Stop the background music
                 audio.pause();
