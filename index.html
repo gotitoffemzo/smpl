@@ -80,7 +80,7 @@
                 right: 0;
                 left: 0;
                 text-align: center;
-                font-size: 40px;
+                font-size: 30px;
             }
             
             /* Media queries for responsiveness */
@@ -117,7 +117,7 @@
                     <!-- Replace the placeholder URL with your actual thumbnail image URL -->
     
                     <!-- Video element with a sample MP4 video -->
-                    <video id="chatVideo" controls " onended="reloadPage()">
+                    <video id="chatVideo" controls " onended="reloadPage()" onclick="hideJustClickText()">
                         <!-- Replace "https://www.example.com/your_video.mp4" with your actual video URL -->
                     </video>
 
@@ -130,6 +130,10 @@
             Your browser does not support the audio tag.
         </audio>
         <script>
+            function hideJustClickText() {
+                var justClickText = document.getElementById('justClickText');
+                justClickText.style.display = 'none';
+            }
             var lastPlayedVideo = "";
             
             function playVideo() {
