@@ -71,17 +71,7 @@
             #videoContainer {
                 position: relative;
             }
-    
-            #justClickText {
-                color: white;
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                right: 0;
-                left: 0;
-                text-align: center;
-                font-size: 30px;
-            }
+
             
             /* Media queries for responsiveness */
             @media screen and (max-width: 768px) {
@@ -130,21 +120,12 @@
             Your browser does not support the audio tag.
         </audio>
         <script>
-            function hideJustClickText() {
-                var justClickText = document.getElementById('justClickText');
-                justClickText.style.display = 'none';
-            }
             var lastPlayedVideo = "";
             
             function playVideo() {
                 var videoThumbnail = document.getElementById('videoThumbnail');
                 var video = document.getElementById('chatVideo');
                 var audio = document.getElementById('luckiomb');
-                var justClickText = document.getElementById('justClickText');
-                justClickText.style.display = 'none';
-    
-                // Additional logic for playing the video, if needed
-            }
 
                 // Stop the background music
                 audio.pause();
