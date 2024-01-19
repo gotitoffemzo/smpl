@@ -34,16 +34,16 @@
                 color: rgb(235, 154, 101);
             }
             body {
-                
                 font-family: Arial, sans-serif;
                 background-color: rgb(182, 149, 149);
+                margin: 0;
             }
             #container {
-                margin-top: 100px;
                 display: flex;
                 flex-wrap: wrap; /* Allow elements to wrap to the next line on small screens */
                 margin: 10px;
                 align-items: center; /* Center the contents */
+                justify-content: center;
             }
 
             #video-container {
@@ -53,6 +53,7 @@
                 max-height: 450px;
                 position: relative;
                 display: flex;
+                margin-top: 20px;
             }
             
             #videoThumbnail {
@@ -65,13 +66,18 @@
                 width: 100%; /* Match the width with the thumbnail */
                 height: 100%; /* Maintain aspect ratio */
                 display: none;
-            }
+                }
             /* Media queries for responsiveness */
+            @media screen and (max-width: 768px) {
+                #video-container {
+                    width: 90%; /* Adjust width for smaller screens */
+                }
+            }
+    
             @media screen and (max-width: 400px) {
                 #video-container {
-                    width: 50%;
+                    width: 100%; /* Full width on very small screens */
                 }
-            
             }
         </style>
     </head>  
