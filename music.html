@@ -41,12 +41,23 @@
             }
             /* Style for boxes */
             .box {
-                width: 600px;
-                height: 600px;
-                background-color: black;
+                width: 80%;
+                max-width: 600px;
                 margin: 20px auto;
                 position: relative;
+            }
+
+            /* Media queries for responsiveness */
+            @media screen and (max-width: 768px) {
+                .box {
+                    width: 90%; /* Adjust the width for medium screens */
+                }
+            }
     
+            @media screen and (max-width: 400px) {
+                .box {
+                    width: 100%; /* Full width on small screens */
+                }
             }
 
         </style>
