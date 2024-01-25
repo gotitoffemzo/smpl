@@ -37,6 +37,9 @@
                 font-family: Arial, sans-serif;
                 background-color: rgb(182, 149, 149);
                 margin: 0;
+                display: flex;
+                flex-direction: column;
+                height: 100vh;
             }
             #container {
                 display: flex;
@@ -44,6 +47,7 @@
                 margin: 10px;
                 align-items: center; /* Center the contents */
                 justify-content: center;
+                flex: 1;
             }
 
             #video-container {
@@ -62,6 +66,21 @@
                 cursor: pointer;
             } 
 
+            #chatContainer {
+                flex: 1;
+                padding: 20px;
+                background-color: #fff;
+                overflow-y: auto;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+                max-width: 300px;
+                margin-top: 20px;
+            }
+
+            #chatInput {
+                width: 100%;
+                padding: 10px;
+                margin-top: 10px;
+            }
             #chatVideo {
                 width: 100%; /* Match the width with the thumbnail */
                 height: 100%; /* Maintain aspect ratio */
@@ -119,6 +138,10 @@
 
                     <div id="justClickText">Just Click The Pic</div>
                 </div>
+            </div>
+            <div id="chatContainer">
+                <div id="chatMessages"></div>
+                <input type="text" id="chatInput" placeholder="Type your message..." onkeydown="sendMessage(event)">
             </div>
         </div>
         <audio id="luckiomb" loop>
@@ -197,6 +220,24 @@
             // Function to reload the page
             function reloadPage() {
                 location.reload();
+            }
+
+                    // Chat functionality
+            function sendMessage(event) {
+                if (event.key === 'Enter') {
+                    var messageInput = document.getElementById('chatInput');
+                    var message = messageInput.value;
+    
+                    if (message.trim() !== '') {
+                        var chatMessages = document.getElementById('chatMessages');
+                        var newMessage = document.createElement('div');
+                        newMessage.textContent = message;
+                        chatMessages.appendChild(newMessage);
+    
+                        // Clear the input field
+                        messageInput.value = '';
+                    }
+                }
             }
         </script>
         
