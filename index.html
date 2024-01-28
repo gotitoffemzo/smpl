@@ -197,6 +197,16 @@
             function reloadPage() {
                 location.reload();
             }
+
+             // Function to adjust container size based on video dimensions
+            function adjustContainerSize() {
+                var video = document.getElementById('chatVideo');
+                var container = document.getElementById('video-container');
+    
+                // Adjust container size to match the video's dimensions
+                container.style.width = video.videoWidth + 'px';
+                container.style.height = video.videoHeight + 'px';
+            }
         </script>
         
     </body>
