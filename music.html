@@ -160,6 +160,29 @@
                 video.load();
                 video.play();
             }
+              // Function to toggle play/pause on header click
+            function togglePlayPause() {
+                var videoBox = document.getElementById("videoBox");
+                var video = videoBox.querySelector("video");
+                
+                if (video.paused) {
+                    video.play();
+                } else {
+                    video.pause();
+                }
+            }
+        
+            // Function to handle double click on header
+            function handleDoubleClick() {
+                playNextVideo();
+            }
+        
+            // Event listener for smpl header click
+            document.getElementById("header").addEventListener("click", togglePlayPause);
+        
+            // Event listener for double click on smpl header
+            document.getElementById("header").addEventListener("dblclick", handleDoubleClick);
+
     
             // Scroll event listener
             window.onscroll = function() {
