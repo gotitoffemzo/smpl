@@ -95,26 +95,19 @@
                 }
     
                 .left-column {
-                    width: 100%;
+                    width: calc(100% - 30px);
                     height: auto;
                     border: none;
                     border-bottom: 30px solid black;
-                    margin-left: 0; 
+                    margin-left: 15px; 
                     margin-top: 0; /* Reset margin-top for smaller screens */
                     border-radius: 0; /* Reset border-radius for smaller screens */
                     text-align: center;
                 }
                 .box {
-                    width: calc(90% + 300px); /* Adjust the width for medium screens */
+                    width: calc(100% + 30px); /* Adjust the width for medium screens */
                 }
             }
-    
-            @media screen and (max-width: 400px) {
-                .box {
-                    width: 100%; /* Full width on small screens */
-                }
-            }
-
         </style>
     </head>  
     <body>
@@ -133,6 +126,12 @@
 
         <!-- Boxes -->
         <div class="box-container">
+            <div class="box" id="videoBox">
+                <video width="100%" height="100%" controls autoplay onended="playNextVideo()" ondblclick="playNextVideo()">
+                    <source src="cartiBackrooms.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
             <div class="left-column">
                 <h1 style="color:rgb(0, 0, 0);font-size:400%; font-family: kripto;">
                     Music
@@ -140,12 +139,6 @@
                 <div class="inner-container">
                      <img src="smpl.jpg" alt="smpl" class="vinyl-img">
                 </div>
-            </div>
-            <div class="box" id="videoBox">
-                <video width="100%" height="100%" controls autoplay onended="playNextVideo()" ondblclick="playNextVideo()">
-                    <source src="cartiBackrooms.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
             </div>
         </div>
 
