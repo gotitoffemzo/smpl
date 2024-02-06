@@ -92,6 +92,7 @@
             @media screen and (max-width: 768px) {
                 .box-container {
                     flex-direction: column;
+                    align-items: center; /* Center items horizontally on mobile */
                 }
     
                 .left-column {
@@ -104,8 +105,11 @@
                     border-radius: 0; /* Reset border-radius for smaller screens */
                     text-align: center;
                 }
-                .box {
-                    width: calc(100% + 30px); /* Adjust the width for medium screens */
+                 .box {
+                    width: 100%; /* Make the box full width on mobile */
+                    max-width: 100%; /* Ensure it doesn't exceed the screen width */
+                    margin: 20px auto; /* Center the box horizontally */
+                    position: relative;
                 }
             }
         </style>
