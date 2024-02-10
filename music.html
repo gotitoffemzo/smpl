@@ -175,25 +175,20 @@
             }
             // Function to toggle audio play/pause
             function toggleAudio() {
-                if (audio.paused) {
+                 if (!audio) {
+                    // Initialize audio element if not already created
+                    audio = new Audio(audioSources[currentAudioIndex]);
                     audio.play();
-                } else {
-                    audio.pause();
+                } else { 
+                    
+                    if (audio.paused) {
+                        audio.play();
+                    } else {
+                        audio.pause();
+                    }
                 }
             }
-
-            // Function to toggle video play/pause
-            function toggleVideo() {
-                var videoBox = document.getElementById("videoBox");
-                var video = videoBox.querySelector("video");
-                
-                if (video.paused) {
-                    video.play();
-                } else {
-                    video.pause();
-                }
-            }
-        
+            
             // Event listener for smpl header click
             document.getElementById("header").addEventListener("click", togglePlayPause);
         
