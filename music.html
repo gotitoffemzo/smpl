@@ -135,7 +135,7 @@
                     Music
                 </h1>  
                 <div class="inner-container">
-                     <img src="smpl.jpg" alt="smpl" class="vinyl-img" onclick="playAudio()">
+                     <img src="smpl.jpg" alt="smpl" class="vinyl-img" onended="playNextAudio()" onclick="toggleAudio()">
                 </div>
             </div>
         </div>
@@ -144,7 +144,8 @@
             // Array of video sources
             var videoSources = ["cartiBackrooms.mp4", "Glokk40Spaz - Bad Man.mp4", "bestinterest.mp4","kaine.Single.mp4"];
             var currentVideoIndex = 0;
-    
+            var audio;
+            
             // Function to play the next video
             function playNextVideo() {
                 currentVideoIndex = (currentVideoIndex + 1) % videoSources.length;
@@ -170,10 +171,25 @@
             function handleDoubleClick() {
                 playNextVideo();
             }
-             // Function to play audio
-            function playAudio() {
-                var audio = new Audio('luckiomb.mp3'); // Replace 'your-audio-file.mp3' with your audio file path
-                audio.play();
+            // Function to toggle audio play/pause
+            function toggleAudio() {
+                if (audio.paused) {
+                    audio.play();
+                } else {
+                    audio.pause();
+                }
+            }
+
+            // Function to toggle video play/pause
+            function toggleVideo() {
+                var videoBox = document.getElementById("videoBox");
+                var video = videoBox.querySelector("video");
+                
+                if (video.paused) {
+                    video.play();
+                } else {
+                    video.pause();
+                }
             }
         
             // Event listener for smpl header click
@@ -181,8 +197,10 @@
         
             // Event listener for double click on smpl header
             document.getElementById("header").addEventListener("dblclick", handleDoubleClick);
+           
+            // Initialize audio element
+            audio = new Audio('your-audio-file.mp3'); // Replace 'your-audio-file.mp3' with your audio file path
 
-    
             // Scroll event listener
             window.onscroll = function() {
                 var header = document.getElementById("header");
