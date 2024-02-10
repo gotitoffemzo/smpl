@@ -179,16 +179,14 @@
                  if (!audio) {
                     // Initialize audio element if not already created
                     audio = new Audio(audioSources[currentAudioIndex]);
+                 }
+                
+                 if (audio.paused) {
                     audio.play();
-                } else { 
-                    
-                    if (audio.paused) {
-                        audio.play();
-                    } else {
-                        audio.pause();
-                    }
-                }
-            }
+                 } else {
+                    audio.pause();
+                 }
+             }
             
             // Event listener for smpl header click
             document.getElementById("header").addEventListener("click", togglePlayPause);
