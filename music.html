@@ -136,7 +136,6 @@
                 </h1>  
                 <div class="inner-container">
                      <img src="smpl.jpg" alt="smpl" class="vinyl-img" onclick="toggleAudio()">
-                        <source src="luckiomb.mp3" type="audio/mp3">
                 </div>
             </div>
         </div>
@@ -179,6 +178,7 @@
                  if (!audio) {
                     // Initialize audio element if not already created
                     audio = new Audio(audioSources[currentAudioIndex]);
+                    audio.src = audioSources[currentAudioIndex]; 
                  }
                 
                  if (audio.paused) {
@@ -187,15 +187,27 @@
                     audio.pause();
                  }
              }
-            
-            // Event listener for smpl header click
+
+                // Function to play the next audio
+            function playNextAudio() {
+                currentAudioIndex = (currentAudioIndex + 1) % audioSources.length;
+        
+                if (audio) {
+                    audio.src = audioSources[currentAudioIndex];
+                    audio.load();
+                    audio.play();
+                }
+            }
+                    // Event listener for smpl header click
             document.getElementById("header").addEventListener("click", togglePlayPause);
         
             // Event listener for double click on smpl header
             document.getElementById("header").addEventListener("dblclick", handleDoubleClick);
            
-            // Initialize audio element
-            audio = new Audio(audioSources[currentAudioIndex]); // Replace 'your-audio-file.mp3' with your audio file path
+            // Event listener for vinyl image click
+            document.querySelector(".vinyl-img").addEventListener("click", function () {
+                toggleAudio();
+            });
 
             // Scroll event listener
             window.onscroll = function() {
