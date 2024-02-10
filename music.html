@@ -170,6 +170,11 @@
             function handleDoubleClick() {
                 playNextVideo();
             }
+             // Function to play audio
+            function playAudio() {
+                var audio = new Audio('luckiomb.mp3'); // Replace 'your-audio-file.mp3' with your audio file path
+                audio.play();
+            }
         
             // Event listener for smpl header click
             document.getElementById("header").addEventListener("click", togglePlayPause);
