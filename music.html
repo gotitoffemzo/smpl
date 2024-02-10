@@ -177,7 +177,7 @@
             function toggleAudio() {
                  if (!audio) {
                     // Initialize audio element if not already created
-                    audio = new Audio(audioSources[currentAudioIndex]);
+                    audio = new Audio();
                     audio.src = audioSources[currentAudioIndex]; 
                  }
                 
