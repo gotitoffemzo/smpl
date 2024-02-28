@@ -106,6 +106,36 @@
                     width: 510px;
                 }
             }
+
+                    /* Style for the pop-up box */
+            #songPopup {
+                display: none;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+                z-index: 999;
+            }
+    
+            #songPopup input {
+                width: 100%;
+                padding: 10px;
+                margin-top: 10px;
+                box-sizing: border-box;
+            }
+    
+            /* Style for the song list visible only to admin */
+            #songSubmits {
+                display: none;
+                margin-top: 20px;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
         </style>
     </head>  
     <body>
@@ -137,6 +167,15 @@
                 <div class="inner-container">
                      <img src="smpl.jpg" alt="smpl" class="vinyl-img" onclick="toggleAudio()">
                 </div>
+                
+                <!-- Pop-up box for entering a song name -->
+                <div id="songPopup">
+                    <h3>Name a song.</h3>
+                    <input type="text" id="songInput" placeholder="Enter song name and press Enter" onkeydown="handleSongInput(event)">
+                </div>
+            
+                <!-- Song list visible only to admin -->
+                <ul id="songSubmits"></ul>
             </div>
         </div>
 
@@ -218,6 +257,57 @@
                     header.style.backgroundColor = "rgb(255, 255, 255)";
                 }
             };
+
+                    // Admin password (replace with a more secure method in a real application)
+            var adminPassword = "admin123";
+    
+            // Function to open the song pop-up
+            function openSongPopup() {
+                var password = prompt("Enter admin password:");
+    
+                if (password === adminPassword) {
+                    var songPopup = document.getElementById("songPopup");
+                    songPopup.style.display = "block";
+    
+                    // Show the song list for admin
+                    var songList = document.getElementById("songSubmits");
+                    songList.style.display = "block";
+                } else {
+                    alert("Incorrect admin password. Access denied.");
+                }
+            }
+    
+            // Function to handle song input and add to the list
+            function handleSongInput(event) {
+                if (event.key === "Enter") {
+                    var songInput = document.getElementById("songInput");
+                    var songName = songInput.value.trim();
+    
+                    if (songName !== "") {
+                        // Add the song name to the list
+                        addToSongSubmits(songName);
+                        // Clear the input field
+                        songInput.value = "";
+                    }
+    
+                    // Close the pop-up
+                    closeSongPopup();
+                }
+            }
+    
+            // Function to close the song pop-up
+            function closeSongPopup() {
+                var songPopup = document.getElementById("songPopup");
+                songPopup.style.display = "none";
+            }
+    
+            // Function to add the song name to the list
+            function addToSongSubmits(songName) {
+                var songList = document.getElementById("songSubmits");
+                var listItem = document.createElement("li");
+                listItem.textContent = songName;
+                songList.appendChild(listItem);
+            }
         </script>
     </body>
 </html>
