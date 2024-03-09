@@ -107,9 +107,10 @@
                 .left-column {
                     width: 510px;
                 }
+            }
 
             @media screen and (max-width: 400px) {
-                #box-container {
+                .box-container {
                     width: 100%; /* Full width on very small screens */
                 }
                 .box {
@@ -223,57 +224,6 @@
                     header.style.backgroundColor = "rgb(255, 255, 255)";
                 }
             };
-
-                    // Admin password (replace with a more secure method in a real application)
-            var adminPassword = "admin123";
-    
-            // Function to open the song pop-up
-            function openSongPopup() {
-                var password = prompt("Enter admin password:");
-    
-                if (password === adminPassword) {
-                    var songPopup = document.getElementById("songPopup");
-                    songPopup.style.display = "block";
-    
-                    // Show the song list for admin
-                    var songList = document.getElementById("songSubmits");
-                    songList.style.display = "block";
-                } else {
-                    alert("Incorrect admin password. Access denied.");
-                }
-            }
-    
-            // Function to handle song input and add to the list
-            function handleSongInput(event) {
-                if (event.key === "Enter") {
-                    var songInput = document.getElementById("songInput");
-                    var songName = songInput.value.trim();
-    
-                    if (songName !== "") {
-                        // Add the song name to the list
-                        addToSongSubmits(songName);
-                        // Clear the input field
-                        songInput.value = "";
-                    }
-    
-                    // Close the pop-up
-                    closeSongPopup();
-                }
-            }
-    
-            // Function to close the song pop-up
-            function closeSongPopup() {
-                var songPopup = document.getElementById("songPopup");
-                songPopup.style.display = "none";
-            }
-    
-            // Function to add the song name to the list
-            function addToSongSubmits(songName) {
-                var songList = document.getElementById("songSubmits");
-                var listItem = document.createElement("li");
-                listItem.textContent = songName;
-                songList.appendChild(listItem);
-            }
         </script>
     </body>
 </html>
