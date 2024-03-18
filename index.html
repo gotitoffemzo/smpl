@@ -112,7 +112,7 @@
                     <!-- Replace the placeholder URL with your actual thumbnail image URL -->
     
                     <!-- Video element with a sample MP4 video -->
-                    <video id="chatVideo" controls onended="reloadPage()" ondblclick="playNextVideo()">
+                    <video id="chatVideo" controls onended="reloadPage()" ondblclick="reloadPage()">
                         <!-- Replace "https://www.example.com/your_video.mp4" with your actual video URL -->
                     </video>
 
@@ -210,7 +210,7 @@
 
                 
             // Event listener for box click to play video
-            document.getElementById("chatVideo").addEventListener("dblclick", playNextVideo);
+            document.getElementById("chatVideo").addEventListener("dblclick", reloadPage);
         </script>
         
     </body>
