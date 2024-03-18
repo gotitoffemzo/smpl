@@ -159,10 +159,11 @@
                 var randomIndex = Math.floor(Math.random() * videoSources.length);
                 return videoSources[randomIndex];
             }
-
             // Function to play the next video
+            function playNextVideo() {
                 var videoBox = document.getElementById("videoBox");
                 var video = videoBox.querySelector("video");
+                var randomVideo = randomVid();
                 video.src = randomVideo;
                 video.load();
                 video.play();
