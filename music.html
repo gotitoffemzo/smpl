@@ -157,13 +157,10 @@
             
             // Function to play a random video
             function randomVid() {
-                var randomIndex;
-                do {
-                    randomIndex = Math.floor(Math.random() * videoSources.length);
-                } while (randomImdex === previousVideoIndex);
-                previousVideoIndex = randomIndex;
+                var randomIndex = Math.floor(Math.random() * videoSources.length);
                 return videoSources[randomIndex];
             }
+            
             // Function to play the next video
             function playNextVideo() {
                 var videoBox = document.getElementById("videoBox");
@@ -188,11 +185,6 @@
     
             // Event listener for double click on header to play next video
             document.getElementById("header").addEventListener("dblclick", playNextVideo);
-
-            document.getElementById("videoBox").addEventListener("click", playNextVideo);
-            
-                // Event listener for box click to play video
-            document.getElementById("videoBox").addEventListener("dblclick", playNextVideo);
         </script>
 </body>
 </html>
