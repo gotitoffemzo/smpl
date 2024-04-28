@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" /> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">  
+        <title>SmPL</title>
+        <style>
+             /* CSS property for header section */
+            .header {
+                background-color: rgb(255, 255, 255);
+                padding: 15px;
+                text-align: center;
+                height: 150px;
+                cursor: pointer;
+            }
+    
+            /* CSS property for navigation menu */
+            .nav_menu {
+                overflow: hidden;
+                background-color: #333;
+            }
+    
+            .nav_menu a {
+                float: left;
+                display: block;
+                color: rgb(50, 168, 158);
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+    
+            .nav_menu a:hover {
+                background-color: white;
+                color: rgb(235, 154, 101);
+            }
+            body {
+                font-family: Arial, sans-serif;
+                background-color: rgb(236, 216, 216);
+                margin: 0;
+            }
+
+             /* Style for boxes */
+            .box-container 
+                max-width: 750px;
+                max-height: 450px;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center; /* Center items horizontally on mobile */
+                align-items: center; /* Center items vertically on mobile */
+                background-color: rgb(255, 255, 255);
+
+            
+            /* Media queries for responsiveness */
+            @media screen and (max-width: 769px) {
+                .box-container {
+                    justify-content: flex-start; /* Reset justification for larger screens */
+                }
+            }
+
+            @media screen and (max-width: 400px) {
+                .box-container {
+                    width: 90%; /* Full width on very small screens */
+                    margin-top: 75px;
+                    margin-left: 18px;
+                }
+            }
+
+        </style>
+    </head>  
+    <body>
+                <!-- header of website layout -->
+        <div class="header" id="header">
+            <h2 style="color:rgb(0, 0, 0);font-size:400%; font-family: audela;">
+                smpl.
+            </h2>
+        </div>
+    
+        <!-- navigation menu for website layout -->
+        <div class="nav_menu">
+            <a href=" https://simplyrenzo.com/">-home</a>
+            <a href="about.html">-contact</a>
+            <a href="music.html">-mv</a>
+        </div>
+
+        <!-- Boxes -->
+        <div class="box-container">
+
+        </div>
+
+        <script>
+  
+    
+            // Event listener for double click on header to play next video
+            document.getElementById("header").addEventListener("dblclick", playNextVideo);
+
+              document.getElementById("videoBox").addEventListener("dblclick", playNextVideo);
+        </script>
+</body>
+</html>
