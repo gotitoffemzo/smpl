@@ -40,32 +40,27 @@
                 margin: 0;
             }
 
-             /* Style for boxes */
-            .box-container 
-                max-width: 750px;
-                max-height: 450px;
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center; /* Center items horizontally on mobile */
-                align-items: center; /* Center items vertically on mobile */
-                background-color: rgb(255, 255, 255);
-
-            
-            /* Media queries for responsiveness */
-            @media screen and (max-width: 769px) {
-                .box-container {
-                    justify-content: flex-start; /* Reset justification for larger screens */
-                }
+            /* Style for spinning disk */
+            .spinner {
+                width: 100px;
+                height: 100px;
+                background-color: transparent;
+                border: 10px solid rgba(0, 0, 0, 0.1);
+                border-top: 10px solid rgb(235, 154, 101);
+                border-radius: 50%;
+                animation: spin 1s linear infinite;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-top: -55px; /* Half of the spinner height */
+                margin-left: -55px; /* Half of the spinner width */
+                display: none; /* Initially hidden */
             }
-
-            @media screen and (max-width: 400px) {
-                .box-container {
-                    width: 90%; /* Full width on very small screens */
-                    margin-top: 75px;
-                    margin-left: 18px;
-                }
+    
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
             }
-
         </style>
     </head>  
     <body>
@@ -83,18 +78,25 @@
             <a href="music.html">-mv</a>
         </div>
 
-        <!-- Boxes -->
-        <div class="box-container">
-
-        </div>
+        <!-- Audio element -->
+        <audio id="myAudio" src="your-audio-file.mp3"></audio>
+        
+        <!-- Spinning disk element -->
+        <div class="spinner" id="spinner"></div>
 
         <script>
-  
-    
-            // Event listener for double click on header to play next video
-            document.getElementById("header").addEventListener("dblclick", playNextVideo);
-
-              document.getElementById("videoBox").addEventListener("dblclick", playNextVideo);
+            var audio = document.getElementById("myAudio");
+            var spinner = document.getElementById("spinner");
+        
+            // Event listener for audio play
+            audio.onplay = function() {
+                spinner.style.display = "block"; // Show the spinning disk
+            };
+        
+            // Event listener for audio pause
+            audio.onpause = function() {
+                spinner.style.display = "none"; // Hide the spinning disk
+            };
         </script>
 </body>
 </html>
