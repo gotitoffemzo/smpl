@@ -56,6 +56,7 @@
                 cursor: pointer;
                 animation: spin 1s linear infinite; /* Add animation for spinning */
                 animation-play-state: paused; /* Initially paused */
+                margin-top: 550px;
             }
             /* Style for small circle in the middle */
             .circle {
@@ -96,11 +97,10 @@
         <audio id="myAudio" src="luckiomb.mp3"></audio>
         
         <!-- Spinning disk element -->
-        <div class="spinner" id="spinner"></div>
-
-        <!-- Small circle in the middle -->
-        <div class="circle"></div>
-
+        <div class="spinner" id="spinner">
+            <!-- Small circle in the middle -->
+            <div class="circle"></div>
+        </div>
         <script>
             var audio = document.getElementById("myAudio");
             var spinner = document.getElementById("spinner");
