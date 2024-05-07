@@ -38,6 +38,7 @@
                 font-family: Arial, sans-serif;
                 background-color: rgb(236, 216, 216);
                 margin: 0;
+                position: relative;
             }
 
             /* Style for spinning disk */
@@ -53,6 +54,26 @@
                 margin-top: -55px; /* Half of the spinner height */
                 margin-left: -55px; /* Half of the spinner width */
                 cursor: pointer;
+                animation: spin 1s linear infinite; /* Add animation for spinning */
+                animation-play-state: paused; /* Initially paused */
+            }
+            /* Style for small circle in the middle */
+            .circle {
+                width: 20px;
+                height: 20px;
+                background-color: rgb(236, 216, 216); /* Same color as body background */
+                border-radius: 50%;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-top: -10px; /* Half of the circle height */
+                margin-left: -10px; /* Half of the circle width */
+                z-index: 1; /* Ensure it's above the spinner */
+            }
+    
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(-360deg); } /* Counter-clockwise rotation */
             }
         </style>
     </head>  
@@ -77,27 +98,26 @@
         <!-- Spinning disk element -->
         <div class="spinner" id="spinner"></div>
 
+        <!-- Small circle in the middle -->
+        <div class="circle"></div>
+
         <script>
             var audio = document.getElementById("myAudio");
             var spinner = document.getElementById("spinner");
 
-            // Event listener for spinner click to play audio
-            spinner.addEventListener("click", function() {
-                if (audio.paused) {
-                    audio.play(); // Play audio
-                } else {
-                    audio.pause(); // Pause audio
-                }
-            });
-
             // Event listener for audio play
             audio.onplay = function() {
-                spinner.style.display = "block"; // Show the spinning disk
+                spinner.style.animationPlayState = "running"; // Start spinning when audio plays
             };
         
             // Event listener for audio pause
             audio.onpause = function() {
-                spinner.style.display = "block"; // Hide the spinning disk
+                spinner.style.animationPlayState = "paused"; // Pause spinning when audio paused
+            };
+        
+            // Event listener for audio ended
+            audio.onended = function() {
+                spinner.style.animationPlayState = "paused"; // Pause spinning when audio ends
             };
         </script>
 </body>
