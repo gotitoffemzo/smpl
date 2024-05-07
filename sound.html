@@ -44,17 +44,15 @@
             .spinner {
                 width: 100px;
                 height: 100px;
-                background-color: transparent;
-                border: 10px solid rgba(0, 0, 0, 0.1);
-                border-top: 10px solid rgb(235, 154, 101);
+                background-image: url('smpl.jpg'); /* Replace with your image URL */
+                background-size: cover;
                 border-radius: 50%;
-                animation: spin 1s linear infinite;
                 position: absolute;
                 top: 50%;
                 left: 50%;
                 margin-top: -55px; /* Half of the spinner height */
                 margin-left: -55px; /* Half of the spinner width */
-                display: none; /* Initially hidden */
+                cursor: pointer;
             }
     
             @keyframes spin {
@@ -79,7 +77,7 @@
         </div>
 
         <!-- Audio element -->
-        <audio id="myAudio" src="your-audio-file.mp3"></audio>
+        <audio id="myAudio" src="luckiomb.mp3"></audio>
         
         <!-- Spinning disk element -->
         <div class="spinner" id="spinner"></div>
@@ -87,7 +85,16 @@
         <script>
             var audio = document.getElementById("myAudio");
             var spinner = document.getElementById("spinner");
-        
+
+            // Event listener for spinner click to play audio
+            spinner.addEventListener("click", function() {
+                if (audio.paused) {
+                    audio.play(); // Play audio
+                } else {
+                    audio.pause(); // Pause audio
+                }
+            });
+
             // Event listener for audio play
             audio.onplay = function() {
                 spinner.style.display = "block"; // Show the spinning disk
@@ -95,7 +102,7 @@
         
             // Event listener for audio pause
             audio.onpause = function() {
-                spinner.style.display = "none"; // Hide the spinning disk
+                spinner.style.display = "block"; // Hide the spinning disk
             };
         </script>
 </body>
