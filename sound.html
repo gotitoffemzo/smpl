@@ -51,8 +51,7 @@
                 position: absolute;
                 top: 50%;
                 left: 50%;
-                margin-top: -55px; /* Half of the spinner height */
-                margin-left: -55px; /* Half of the spinner width */
+                transform: translate(-50%, -50%); /* Center the spinner */
                 cursor: pointer;
                 animation: spin 1s linear infinite; /* Add animation for spinning */
                 animation-play-state: paused; /* Initially paused */
@@ -104,16 +103,16 @@
             var audio = document.getElementById("myAudio");
             var spinner = document.getElementById("spinner");
 
-            // Event listener for audio play
-            audio.onplay = function() {
-                spinner.style.animationPlayState = "running"; // Start spinning when audio plays
-            };
-        
-            // Event listener for audio pause
-            audio.onpause = function() {
-                spinner.style.animationPlayState = "paused"; // Pause spinning when audio paused
-            };
-        
+            // Event listener for spinner click to play audio
+            spinner.addEventListener("click", function() {
+                if (audio.paused) {
+                    audio.play(); // Play audio
+                    spinner.style.animationPlayState = "running"; // Start spinning when audio plays
+                } else {
+                    audio.pause(); // Pause audio
+                    spinner.style.animationPlayState = "paused"; // Pause spinning when audio paused
+                }
+            });
             // Event listener for audio ended
             audio.onended = function() {
                 spinner.style.animationPlayState = "paused"; // Pause spinning when audio ends
