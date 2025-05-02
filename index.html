@@ -65,6 +65,7 @@
 
         #chatVideo {
             width: 100%;
+            max-width: 560px;
             display: none;
         }
 
@@ -114,7 +115,10 @@
         <div id="video-container">
             <div id="videoContainer">
                 <img id="videoThumbnail" src="cool.jpg" alt="Video Thumbnail" onclick="playVideo()">
-                <div id="chatVideo"></div>
+                <video id="chatVideo" controls onended="location.reload()" ondblclick="location.reload()">
+                    <source src="shhhh.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
                 <div id="justClickText">Just Click The Pic</div>
             </div>
         </div>
@@ -130,7 +134,8 @@
     <script>
         function playVideo() {
             var videoThumbnail = document.getElementById('videoThumbnail');
-            var videoContainer = document.getElementById('chatVideo');
+            var video = document.getElementById('chatVideo');
+            var text = document.getElementById('justClickText');
             var audio = document.getElementById('luckiomb');
 
             // Stop background audio
@@ -139,22 +144,11 @@
 
             // Hide thumbnail and prompt
             videoThumbnail.style.display = 'none';
-            document.getElementById('justClickText').style.display = 'none';
+            text.style.display = 'none';
 
-            // Show video container
-            videoContainer.style.display = 'block';
-
-            // Add YouTube iframe
-            videoContainer.innerHTML = `
-                <iframe width="560" height="315"
-                    src="https://www.youtube.com/embed/bK_WxtZP_xk?si=Ci42piH_227mdlfj&autoplay=1"
-                    title="YouTube video player"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin"
-                    allowfullscreen>
-                </iframe>
-            `;
+            // Show and play video
+            video.style.display = 'block';
+            video.play();
         }
 
         function toggleAudio() {
