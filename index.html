@@ -1,216 +1,170 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
-    <head>
-        <meta charset="utf-8" /> 
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
-        <meta name="viewport" content="width=device-width, inital-scale=1">  
-        <title>SmPL</title>
-        <style>
-             /* CSS property for header section */
-            .header {
-                background-color: rgb(255, 255, 255);
-                padding: 15px;
-                text-align: center;
-                height: 150px;
-            }
-    
-            /* CSS property for navigation menu */
-            .nav_menu {
-                overflow: hidden;
-                background-color: #333;
-            }
-    
-            .nav_menu a {
-                float: left;
-                display: block;
-                color: rgb(50, 168, 158);
-                text-align: center;
-                padding: 14px 16px;
-                text-decoration: none;
-            }
-    
-            .nav_menu a:hover {
-                background-color: white;
-                color: rgb(235, 154, 101);
-            }
-            body {
-                font-family: Arial, sans-serif;
-                background-color: rgb(182, 149, 149);
-                margin: 0;
-            }
-            #container {
-                display: flex;
-                flex-wrap: wrap; /* Allow elements to wrap to the next line on small screens */
-                margin: 10px;
-                align-items: center; /* Center the contents */
-                justify-content: center;
-            }
+<head>
+    <meta charset="utf-8" /> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">  
+    <title>SmPL</title>
+    <style>
+        .header {
+            background-color: rgb(255, 255, 255);
+            padding: 15px;
+            text-align: center;
+            height: 150px;
+        }
 
+        .nav_menu {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        .nav_menu a {
+            float: left;
+            display: block;
+            color: rgb(50, 168, 158);
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .nav_menu a:hover {
+            background-color: white;
+            color: rgb(235, 154, 101);
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(182, 149, 149);
+            margin: 0;
+        }
+
+        #container {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 10px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #video-container {
+            flex: 1;
+            width: 70%;
+            max-width: 750px;
+            position: relative;
+            display: flex;
+            margin-top: 20px;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #videoThumbnail {
+            width: 100%;
+            max-width: 560px;
+            cursor: pointer;
+        }
+
+        #chatVideo {
+            width: 100%;
+            display: none;
+        }
+
+        #videoContainer {
+            position: relative;
+            width: 100%;
+            max-width: 560px;
+        }
+
+        #justClickText {
+            color: white;
+            text-align: center;
+            font-size: 24px;
+            margin-top: 10px;
+        }
+
+        @media screen and (max-width: 768px) {
             #video-container {
-                flex: 1;
-                width: 70%; /* Full width on small screens, 50% on larger screens */
-                max-width: 750px;
-                max-height: 450px;
-                position: relative;
-                display: flex;
-                margin-top: 20px;
+                width: 90%;
             }
-            
-            #videoThumbnail {
+        }
+
+        @media screen and (max-width: 400px) {
+            #video-container {
                 width: 100%;
-                height: 100%;
-                cursor: pointer;
-            } 
-            #chatVideo {
-                width: 100%; /* Match the width with the thumbnail */
-                height: 100%; /* Maintain aspect ratio */
-                display: none;
-                }
+            }
+        }
+    </style>
+</head>  
+<body>
+    <!-- Header -->
+    <div class="header" onclick="toggleAudio()" style="cursor: pointer;">
+        <h2 style="color:rgb(0, 0, 0);font-size:400%; font-family: audela;">
+            smpl.
+        </h2>
+    </div>
 
-            #videoContainer {
-                position: relative;
-            }
+    <!-- Navigation -->
+    <div class="nav_menu">
+        <a href="about.html">-contact</a>
+    </div>
 
-            #justClickText {
-                color: white;
-                text-align: center;
-                font-size: 24px; /* Adjust the font size as needed */
-                margin-top: 10px;
-            }
-            
-            /* Media queries for responsiveness */
-            @media screen and (max-width: 768px) {
-                #video-container {
-                    width: 90%; /* Adjust width for smaller screens */
-                }
-            }
-    
-            @media screen and (max-width: 400px) {
-                #video-container {
-                    width: 100%; /* Full width on very small screens */
-                }
-            }
-        </style>
-    </head>  
-    <body>
-                <!-- header of website layout -->
-        <div class="header" onclick="toggleAudio()" style="cursor: pointer;">
-            <h2 style="color:rgb(0, 0, 0);font-size:400%; font-family: audela;">
-                smpl.
-            </h2>
-        </div>
-    
-        <!-- navigation menu for website layout -->
-        <div class="nav_menu">
-            <a href="about.html">-contact</a>
-        </div><br><br><br>
-        <div id="container"> 
-            <div id="video-container">
-                <div id="videoContainer">
-                    <img id="videoThumbnail" src="cool.jpg" alt="Video Thumbnail" onclick="playVideo()" >
-                    <!-- Replace the placeholder URL with your actual thumbnail image URL -->
-    
-                    <!-- Video element with a sample MP4 video -->
-                    <video id="chatVideo" controls onended="reloadPage()" ondblclick="reloadPage()">
-                        <!-- Replace "https://www.example.com/your_video.mp4" with your actual video URL -->
-                    </video>
+    <br><br><br>
 
-                    <div id="justClickText">Just Click The Pic</div>
-                </div>
+    <!-- Video Container -->
+    <div id="container"> 
+        <div id="video-container">
+            <div id="videoContainer">
+                <img id="videoThumbnail" src="cool.jpg" alt="Video Thumbnail" onclick="playVideo()">
+                <div id="chatVideo"></div>
+                <div id="justClickText">Just Click The Pic</div>
             </div>
         </div>
-        <audio id="luckiomb" loop>
-            <source src="luckiomb.mp3" type="audio/mp3">
-            Your browser does not support the audio tag.
-        </audio>
-        <script>
-            var lastPlayedVideo = "";
-            
-            function playVideo() {
-                var videoThumbnail = document.getElementById('videoThumbnail');
-                var video = document.getElementById('chatVideo');
-                var audio = document.getElementById('luckiomb');
+    </div>
 
-                // Stop the background music
+    <!-- Background Audio -->
+    <audio id="luckiomb" loop>
+        <source src="luckiomb.mp3" type="audio/mp3">
+        Your browser does not support the audio tag.
+    </audio>
+
+    <!-- Script -->
+    <script>
+        function playVideo() {
+            var videoThumbnail = document.getElementById('videoThumbnail');
+            var videoContainer = document.getElementById('chatVideo');
+            var audio = document.getElementById('luckiomb');
+
+            // Stop background audio
+            audio.pause();
+            audio.currentTime = 0;
+
+            // Hide thumbnail and prompt
+            videoThumbnail.style.display = 'none';
+            document.getElementById('justClickText').style.display = 'none';
+
+            // Show video container
+            videoContainer.style.display = 'block';
+
+            // Add YouTube iframe
+            videoContainer.innerHTML = `
+                <iframe width="560" height="315"
+                    src="https://www.youtube.com/embed/bK_WxtZP_xk?si=Ci42piH_227mdlfj&autoplay=1"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen>
+                </iframe>
+            `;
+        }
+
+        function toggleAudio() {
+            var audio = document.getElementById('luckiomb');
+            if (audio.paused) {
+                audio.play();
+            } else {
                 audio.pause();
-                audio.currentTime = 0;
-
-                // Hide the thumbnail
-                videoThumbnail.style.display = 'none';
-
-                // Show the video
-                video.style.display = 'flex';
-
-                // Get a random video filename
-                var randomVideo = getRandomVideo();
-                while (randomVideo === lastPlayedVideo) {
-                    randomVideo = getRandomVideo();
-                }
-
-                // Update the last played video
-                lastPlayedVideo = randomVideo;
-
-                // Reset the video element
-                video.innerHTML = '';
-                // Add the video source dynamically
-                var source = document.createElement('source');
-                source.src = randomVideo;
-                source.type = 'video/mp4';
-                video.appendChild(source);
-
-
-
-                video.play();
             }
-
-            // Function to play audio
-            function toggleAudio() {
-                var audio = document.getElementById('luckiomb');
-                if (audio.paused) {
-                    audio.play();
-                } else {
-                    audio.pause();
-                }
-            }
-
-            // Function to stop audio when the video is played
-            function stopAudio() {
-                var audio = document.getElementById('luckiomb');
-                audio.pause();
-                audio.currentTime = 0;
-            }
-
-            // Example function to get a random video filename
-            function getRandomVideo() {
-                var videos = ["shhhh.mp4"]; // Add more video filenames as needed
-                var randomIndex = Math.floor(Math.random() * videos.length);
-                return videos[randomIndex];
-            }
-
-            // Function to play another random video when the current video ends
-            function playAnotherRandomVideo() {
-                playVideo();
-            }
-
-            // Function to reload the page
-            function reloadPage() {
-                location.reload();
-            }
-
-             // Function to adjust container size based on video dimensions
-            function adjustContainerSize() {
-                var video = document.getElementById('chatVideo');
-                var container = document.getElementById('videoContainer');
-    
-                // Adjust container size to match the video's dimensions
-                container.style.width = video.videoWidth + 'px';
-                container.style.height = video.videoHeight + 'px';
-            }
-
-                
-            // Event listener for box click to play video
-            document.getElementById("chatVideo").addEventListener("dblclick", reloadPage);
-        </script>
-        
-    </body>
+        }
+    </script>
+</body>
 </html>
